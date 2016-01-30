@@ -26,6 +26,10 @@ export class StyleguideToc extends React.Component {
             );
         });
 
+        if (components.length <= 1) {
+            return null;
+        }
+
         return (
             <div>
                 <Panel bsStyle="success" header={title}>
