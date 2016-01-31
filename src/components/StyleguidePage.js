@@ -19,7 +19,7 @@ export class StyleguidePage extends React.Component {
         var { styleguideRoot } = this.context;
         var { name, component } = this.props;
         var componentName = name.replace('.guide', '');
-        var componentFile = componentName + '.js';
+        var componentFile = componentName;
 
         var componentPath = [
             styleguideRoot,
