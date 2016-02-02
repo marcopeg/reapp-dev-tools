@@ -27,11 +27,26 @@ export function init(_cwd, _args) {
 }
 
 export function addComponent(name) {
+
+    var plugin;
+    if (name.indexOf('/') !== -1) {
+        name = name.split('/');
+        plugin = name[0];
+        name = name[1];
+    }
+
     var fileName = name + '.js';
     var guideFile = name + '.guide.js';
-    var guidePath = path.join(cwd, 'app', 'styleguide', 'components', guideFile);
+
+    var guidePath;
+    if (plugin) {
+        guidePath = path.join(cwd, 'app', 'plugins', plugin, 'styleguide', 'components', guideFile);
+    } else {
+        guidePath = path.join(cwd, 'app', 'styleguide', 'components', guideFile);
+    }
 
     var component = {
+        plugin,
         name,
         fileName,
         guideFile,
