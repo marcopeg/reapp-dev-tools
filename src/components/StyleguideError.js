@@ -22,10 +22,6 @@ export class StyleguideError extends React.Component {
         var { error, title } = this.props;
         var message = error.message || error.toString();
 
-        if (message.indexOf('.guide') !== -1) {
-            message = message.replace('.guide', '.guide.js');
-        }
-
         return (
             <Grid>
                 <StyleguideTitle title={title} />

@@ -2,7 +2,6 @@
 import { renderMultiComponents } from './render/render-multi-components';
 import { renderSingleComponent } from './render/render-single-component';
 import { renderStyleguideInfo } from './render/render-styleguide-info';
-import { getComponentRequirePath } from './render/get-component-require-path';
 
 import { SGPage } from './components/SGPage';
 import { SGSection } from './components/SGSection';
@@ -14,5 +13,4 @@ module.exports = {
     renderMultiComponents,
     renderSingleComponent,
     renderStyleguideInfo,
-    getComponentRequirePath,
 };
