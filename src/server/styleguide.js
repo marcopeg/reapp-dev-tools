@@ -40,9 +40,9 @@ export function addComponent(name) {
 
     var guidePath;
     if (plugin) {
-        guidePath = path.join(cwd, 'app', 'plugins', plugin, 'styleguide', guideFile);
+        guidePath = path.join(cwd, 'app', 'plugins', plugin, 'styleguide', 'components', guideFile);
     } else {
-        guidePath = path.join(cwd, 'app', 'styleguide', guideFile);
+        guidePath = path.join(cwd, 'app', 'styleguide', 'components', guideFile);
     }
 
     var component = {
@@ -62,7 +62,7 @@ export function addComponent(name) {
 }
 
 export function addComponents() {
-    var componentsPath = path.join(cwd, 'app', 'styleguide');
+    var componentsPath = path.join(cwd, 'app', 'styleguide', 'components');
     fs.readdirSync(componentsPath)
         .filter(isGuideComponent)
         .map(getComponentName)
