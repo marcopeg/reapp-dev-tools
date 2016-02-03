@@ -13,21 +13,32 @@ export class StyleguidePage extends React.Component {
     static propTypes = {
         name: React.PropTypes.string.isRequired,
         component: React.PropTypes.func.isRequired,
+        info: React.PropTypes.object.isRequired,
     };
 
     render() {
         var { styleguideRoot } = this.context;
-        var { name, component } = this.props;
+        var { name, component, info } = this.props;
         var componentName = name.replace('.guide', '');
         var componentFile = componentName;
 
-        var componentPath = [
-            styleguideRoot,
-            'app',
-            'client',
-            'components',
-            componentFile,
-        ].join('/');
+        var componentPath;
+        if (info.plugin) {
+            componentPath = [
+                'app',
+                'plugins',
+                info.plugin,
+                'components',
+                componentFile,
+            ].join('/');
+        } else {
+            componentPath = [
+                'app',
+                'client',
+                'components',
+                componentFile,
+            ].join('/');
+        }
 
         var source = (
             <code

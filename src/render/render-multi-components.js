@@ -16,7 +16,8 @@ export function renderMultiComponents(targetEl, root, components, sources, appNa
                 <StyleguidePage
                     name={component.name}
                     key={component.name}
-                    component={GuideComponent} />
+                    component={GuideComponent}
+                    info={component.info} />
             );
         });
 
