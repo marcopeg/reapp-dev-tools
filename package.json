@@ -1,6 +1,6 @@
 {
   "name": "reapp-dev-tools",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Development utilities for Yeoman generator-reapp",
   "main": "./lib/index.js",
   "jsnext:main": "./src/index.js",
