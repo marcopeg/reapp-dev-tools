@@ -38,8 +38,8 @@ export function run(cwd, cfg) {
 
 export function table(serverCfg) {
     var table = {
-        '/' : styleguideEntryPoint(),
-        '/index.html' : styleguideEntryPoint(),
+        '/' : styleguideEntryPoint(serverCfg),
+        '/index.html' : styleguideEntryPoint(serverCfg),
     };
 
     serverCfg.proxyUrls.forEach(function (url) {
@@ -53,11 +53,15 @@ export function table(serverCfg) {
     return table;
 }
 
-export function styleguideEntryPoint() {
+export function styleguideEntryPoint(serverCfg) {
+    var {
+        guideEntryPoint = '/config/guide.html',
+        clientEntryPoint = '/config/client.html',
+    } = serverCfg;
+
     return {
         bypass: function () {
-            return styleguide.isActive() ? '/config/guide.html' : '/config/client.html';
+            return styleguide.isActive() ? guideEntryPoint : clientEntryPoint;
         },
     };
 }
-
