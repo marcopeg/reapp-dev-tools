@@ -12,9 +12,15 @@ var sources = [];
 export function init(_cwd, _args) {
     var args = [..._args];
     cwd = _cwd;
-    
+
     if (args.length > 2) {
         let arg = args.pop();
+
+        // exception to handle API server mode
+        if (arg === 'api') {
+            return;
+        }
+
         if (
             arg === 'styleguide' ||
             arg === 'guide'
