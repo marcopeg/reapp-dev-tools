@@ -19,8 +19,12 @@ export function run(cwd, cfg) {
 
     // list here the apis you plan to use
     fs.readdirSync(path.join(cwd, 'app', 'server'))
+        // skip hidden files
         .filter(i => i.substr(0, 1) !== '.')
+        // skip disabled routers
         .filter(i => i.substr(0, 1) !== '_')
+        // skip folders
+        .filter(i => fs.lstatSync(path.join(cwd, './app/server/' + i)).isFile())
         .forEach(api => {
             var apiPath = path.join(cwd, './app/server/' + api);
             app.use('/' + api.replace('.js', ''), require(apiPath));
